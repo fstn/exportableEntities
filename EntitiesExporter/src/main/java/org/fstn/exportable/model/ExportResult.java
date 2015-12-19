@@ -1,12 +1,12 @@
 package org.fstn.exportable.model;
 
-import org.fstn.exportable.annotation.SecretaryExport;
+import org.fstn.exportable.annotation.ExportField;
 
 public class ExportResult{
 	private String key;
 	private String name;
 	private String columnHeader;
-	private SecretaryExport exportable;
+	private ExportField exportable;
 	private Object value;
 	private Class<?> type;
 	private Class<?> parentType;
@@ -17,10 +17,10 @@ public class ExportResult{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public SecretaryExport getExportable() {
+	public ExportField getExportable() {
 		return exportable;
 	}
-	public void setExportable(SecretaryExport exportable) {
+	public void setExportable(ExportField exportable) {
 		this.exportable = exportable;
 	}
 	public Object getValue() {

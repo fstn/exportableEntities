@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.fstn.exportable.annotation.SecretaryExport;
+import org.fstn.exportable.annotation.ExportField;
 import org.fstn.exportable.model.ExportResult;
 import org.fstn.exportable.model.Exportable;
 
@@ -47,7 +47,7 @@ public class ExportableFacade implements Serializable {
 		List<ExportResult> exportResult = new ArrayList<ExportResult>();
 		Method getter;
 		Object value;
-		SecretaryExport secretaryExport;
+		ExportField secretaryExport;
 		int maxOccurence;
 
 		
@@ -73,7 +73,7 @@ public class ExportableFacade implements Serializable {
 			type = field.getType();
 			name = field.getName();
 			String fieldKey = key+"_"+name;
-			secretaryExport = field.getAnnotation(SecretaryExport.class);
+			secretaryExport = field.getAnnotation(ExportField.class);
 			if (secretaryExport != null) {
 				try {
 					maxOccurence = secretaryExport.maxOccurence();
