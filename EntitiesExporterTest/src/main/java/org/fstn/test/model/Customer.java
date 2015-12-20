@@ -1,6 +1,8 @@
 package org.fstn.test.model;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 
 import org.fstn.exportable.annotation.ExportField;
@@ -22,6 +24,9 @@ public class Customer implements Exportable{
 	/** The first name. */
 	@ExportField
 	protected String firstName;
+	
+	@ExportField
+	protected List<Vehicule> vehicules;
 	
 	/**
 	 * Gets the last name.
@@ -62,6 +67,20 @@ public class Customer implements Exportable{
 	@Override
 	public String exportColumnHeader() {
 		return "Customer";
+	}
+
+	/**
+	 * @return the vehicules
+	 */
+	public List<Vehicule> getVehicules() {
+		return vehicules;
+	}
+
+	/**
+	 * @param vehicules the vehicules to set
+	 */
+	public void setVehicules(List<Vehicule> vehicules) {
+		this.vehicules = vehicules;
 	}
 	
 	

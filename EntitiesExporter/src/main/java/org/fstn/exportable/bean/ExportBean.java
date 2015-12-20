@@ -156,6 +156,7 @@ public class ExportBean implements Serializable {
 
 		String name;
 		String headerName;
+		String key;
 		Cell parentHeaderCell;
 		Cell cell;
 		Row row;
@@ -193,6 +194,9 @@ public class ExportBean implements Serializable {
 		Row header = sheet.createRow(numRow);
 		header.setHeight((short) 500);
 		numRow = 2;
+		Row keyHeader = sheet.createRow(numRow);
+		keyHeader.setHeight((short) 500);
+		numRow = 3;
 		sheet.setDisplayGridlines(true);
 
 		DateFormat dateFormatFrance = DateFormat.getInstance();
@@ -206,6 +210,8 @@ public class ExportBean implements Serializable {
 				for (ExportResult exportUnit : exportResult) {
 					name = (String) exportUnit.getName();
 					headerName = (String) exportUnit.getColumnHeader();
+					key = (String) exportUnit.getKey();
+
 
 					// on retire le numéro de fin pour pouvoir selectionner tous
 					// les référents, tous les ...
@@ -222,6 +228,14 @@ public class ExportBean implements Serializable {
 							headerCell.setCellStyle(style);
 							headerCell.setCellValue(name);
 							sheet.autoSizeColumn(numCell, true);
+							
+							keyHeader.setRowStyle(style);
+							Cell keyHeaderCell = keyHeader.createCell(numCell);
+							keyHeaderCell.setCellStyle(style);
+							keyHeaderCell.setCellValue(key);
+							sheet.autoSizeColumn(numCell, true);
+							
+							
 
 							//END TODO only on first object
 						cell = row.createCell(numCell);

@@ -47,7 +47,7 @@ public class ExportableFacade implements Serializable {
 		List<ExportResult> exportResult = new ArrayList<ExportResult>();
 		Method getter;
 		Object value;
-		ExportField secretaryExport;
+		ExportField exportField;
 		int maxOccurence;
 
 		
@@ -69,15 +69,15 @@ public class ExportableFacade implements Serializable {
 		}
 		for (Field field : classField) {
 			value = null;
-			secretaryExport = null;
+			exportField = null;
 			type = field.getType();
 			name = field.getName();
 			String fieldKey = key+"_"+name;
-			secretaryExport = field.getAnnotation(ExportField.class);
-			if (secretaryExport != null) {
+			exportField = field.getAnnotation(ExportField.class);
+			if (exportField != null) {
 				try {
-					maxOccurence = secretaryExport.maxOccurence();
-					elementTypeForFieldList = secretaryExport.elementType();
+					maxOccurence = exportField.maxOccurence();
+					elementTypeForFieldList = exportField.elementType();
 					getter = classType.getMethod(
 							"get" + name.substring(0, 1).toUpperCase()
 									+ name.substring(1), null);
@@ -157,7 +157,7 @@ public class ExportableFacade implements Serializable {
 						}else{
 							exportUnit.setKey(classType.getSimpleName().split("_\\$\\$_")[0]+"_"+secretaryExport.key()+"_"+name);							
 						}*/
-						exportUnit.setExportable(secretaryExport);
+						exportUnit.setExportable(exportField);
 						exportUnit.setName(name);
 						exportUnit.setValue("");
 						exportUnit.setType(String.class);
@@ -171,6 +171,7 @@ public class ExportableFacade implements Serializable {
 						}
 					}
 				} catch (Exception e) {
+					e.printStackTrace();
 					logger.info("can't read field value" + name + " " + type);
 				}
 			}
