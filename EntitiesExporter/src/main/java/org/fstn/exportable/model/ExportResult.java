@@ -3,13 +3,13 @@ package org.fstn.exportable.model;
 import org.fstn.exportable.annotation.ExportField;
 
 public class ExportResult{
-	private String key;
-	private String name;
-	private String columnHeader;
-	private ExportField exportable;
-	private Object value;
-	private Class<?> type;
-	private Class<?> parentType;
+	protected String key;
+	protected String name;
+	protected String columnHeader;
+	protected ExportField exportable;
+	protected Object value;
+	protected Class<?> type;
+	protected Class<?> parentType;
 	
 	public String getName() {
 		return name;

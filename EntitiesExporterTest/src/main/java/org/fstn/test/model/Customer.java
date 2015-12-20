@@ -17,11 +17,11 @@ public class Customer implements Exportable{
 
 	/** The last name. */
 	@ExportField
-	private String lastName;
+	protected String lastName;
 	
 	/** The first name. */
 	@ExportField
-	private String firstName;
+	protected String firstName;
 	
 	/**
 	 * Gets the last name.
